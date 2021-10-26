@@ -1,0 +1,4 @@
+﻿  11_4.cpp
+D:\Alex\SkillBox_HomeWorks\11_4\11_4\11_4.cpp(50,68): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Alex\SkillBox_HomeWorks\11_4\11_4\11_4.cpp(51,36): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  11_4.vcxproj -> D:\Alex\SkillBox_HomeWorks\11_4\x64\Debug\11_4.exe
