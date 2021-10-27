@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 
+
 /* Вы продолжаете писать калькулятор, работающий над вещественными числами повышенной точности. Вы уже научились
  * проверять корректность записи вещественных чисел в виде строк, и теперь перед вами новая цель — научиться сравнивать
  * такие вещественные числа.
@@ -25,6 +26,7 @@ bool isCorrectNumbers(std::string text) {
                 return false;
             }
             else if (text[0] == '-') {
+                continue;
             }
             else return false;
         }
@@ -41,32 +43,81 @@ int fractionalNumber(std::string text) {
     for (int i = 0; i < text.length(); i++) {
         if (text[i] == '.') return i;
     }
-    return 0;
+    return -1;
+}
+
+std::string correctNumber(std::string text) {
+    std::string output = "";
+
+    int n;
+
+    if (isNumberPositive(text) && fractionalNumber(text) != 0) n = 0;
+    else {
+        n = 1;
+        output += text[0];
+    }
+
+    for (int i = n; i < text.length(); i++) {
+        if (text[n] == '0') {
+            bool stop = false;
+            if (text[i] == '0' && text[i + 1] != '.' && !stop) continue;
+            else {
+                stop = true;
+                output += text[i];
+            }
+        }
+        else {
+            return text;
+        }
+    }
+
+    return output;
 }
 
 std::string numberCompression(std::string text1, std::string text2) {
-    int maxLength;
 
-    if (text1.length() > text2.length()) maxLength = text1.length();
-    else maxLength = text2.length();
+    text1 = correctNumber(text1);
+    text2 = correctNumber(text2);
+
+    //Надо добавить функцию, которая бы считывала остаток, если у числа одного нету остатка, а у другого есть, то их надо уровнять по длине и докинуть сверху остаток
+
+    if (fractionalNumber(text1) == -1 && fractionalNumber(text2) != -1) {
+        text1 += '.';
+    }
+    else if (fractionalNumber(text2) == -1 && fractionalNumber(text2) != -1) {
+        text2 += '.';
+    }
+
+    if (text1.length() < text2.length()) {
+        for (int i = 0; i < text2.length() - text1.length(); i++) text1 += '0';
+    }
+    else if (text2.length() < text1.length()) {
+        for (int i = 0; i < text1.length() - text2.length(); i++) text2 += '0';
+    }
 
     if ((isNumberPositive(text1) && isNumberPositive(text2)) || (!isNumberPositive(text1) && !isNumberPositive(text2))) {
         if (fractionalNumber(text1) == fractionalNumber(text2)) {
-            if (fractionalNumber(text1) == 0) {
-                for (int i = 0; i < maxLength; i++) {
-                    if (text1[i] > text2[i]) return "More";
-                    else if (text1[i] < text2[i]) return "Less";
+            if (fractionalNumber(text1) == -1) {
+                for (int i = 0; i < text1.length(); i++) {
+                    if ((text1[i] > text2[i]) && isNumberPositive(text1)) return "More";
+                    else if ((text1[i] < text2[i]) && isNumberPositive(text1)) return "Less";
+                    else if ((text1[i] > text2[i]) && !isNumberPositive(text1)) return "Less";
+                    else if ((text1[i] < text2[i]) && !isNumberPositive(text1)) return "More";
                 }
                 return "Equal";
             }
             else {
                 for (int i = 0; i < fractionalNumber(text1); i++) {
-                    if (text1[i] > text2[i]) return "More";
-                    else if (text1[i] < text2[i]) return "Less";
+                    if ((text1[i] > text2[i]) && isNumberPositive(text1)) return "More";
+                    else if ((text1[i] < text2[i]) && isNumberPositive(text1)) return "Less";
+                    else if ((text1[i] > text2[i]) && !isNumberPositive(text1)) return "Less";
+                    else if ((text1[i] < text2[i]) && !isNumberPositive(text1)) return "More";
                 }
-                for (int i = fractionalNumber(text1) + 1; i < maxLength; i++) {
-                    if (text1[i] > text2[i]) return "More";
-                    else if (text1[i] < text2[i]) return "Less";
+                for (int i = fractionalNumber(text1) + 1; i < text1.length(); i++) {
+                    if ((text1[i] > text2[i]) && isNumberPositive(text1)) return "More";
+                    else if ((text1[i] < text2[i]) && isNumberPositive(text1)) return "Less";
+                    else if ((text1[i] > text2[i]) && !isNumberPositive(text1)) return "Less";
+                    else if ((text1[i] < text2[i]) && !isNumberPositive(text1)) return "More";
                 }
                 return "Equal";
             }
