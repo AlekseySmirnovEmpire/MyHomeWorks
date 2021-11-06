@@ -58,7 +58,7 @@ int main() {
 
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++) {
-			std::cout << aria[i][j][level - 1] << ' ';
+			std::cout << aria[i][j][level] << ' ';
 		}
 		std::cout << std::endl;
 	}
