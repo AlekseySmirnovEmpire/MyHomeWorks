@@ -3,34 +3,19 @@
 
 bool isWinner(char arr[][3]) {
 	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			if (((arr[i][j] == arr[i][j + 1] && arr[i][j] == arr[i][j + 2]) ||
-					(arr[i][j] == arr[i + 1][j] && arr[i][j] == arr[i + 2][j]))
-					&& arr[i][j] != ' ') {
-				return true;
-			}
+		if ((arr[i][0] != ' ' && arr[i][0] == arr[i][1] && arr[i][0] == arr[i][2]) ||
+				(arr[0][i] != ' ' && arr[0][i] == arr[1][i] && arr[0][i] == arr[2][i])) {
+			return true;
 		}
 	}
 	return false;
 }
 
 bool isCorrectInput(std::string input) {
-	if (input.length() != 5) return false;
-	else {
-		if ((input[0] == 'X' || input[0] == 'O') && input[1] == ' ' &&
-				(input[2] > '0' && input[2] <= '3') && input[3] == ' ' &&
-				(input[4] > '0' && input[4] <= '3')) {
-			return true;
-		}
-		else return false;
-	}
-}
+	if (input.length() != 3) return false;
 
-void insertInput(char arr[][3], char posX, char posY, char symbol) {
-	int x = (int)(posX - '0') - 1;
-	int y = (int)(posY - '0') - 1;
-
-	arr[x][y] = symbol;
+	return ((input[0] > '0' && input[0] <= '3') && (input[2] > '0' && input[2] <= '3')
+		&& input[1] == ' ');
 }
 
 void outputArray(char arr[][3]) {
@@ -77,7 +62,6 @@ int main() {
 	а как именно - попробуйте догадаться сами.*/
 
 	char field[3][3];
-	char winnerChar = ' ';
 	std::string userInput;
 
 	for (int i = 0; i < 3; i++) {
@@ -86,14 +70,18 @@ int main() {
 		}
 	}    // Вводим игровое поле, которое полностью состоит из пробелов.
 
+	bool firstPlayerTurn = true;
+
 	do {
-		std::cout << "Input your symbol and it's position (SYMBOL ROW COL): ";
+		std::cout << "Input your symbol and it's position (ROW COL): ";
 		std::getline(std::cin, userInput);
-		if (isCorrectInput(userInput) && userInput[0] != winnerChar) {
-			if (field[(userInput[2] - '0') - 1][(userInput[4] - '0') - 1] == ' ') {
-				insertInput(field, userInput[2], userInput[4], userInput[0]);
+		if (isCorrectInput(userInput)) {
+			int x = (int)(userInput[0] - '0') - 1;
+			int y = (int)(userInput[2] - '0') - 1;
+			if (field[x][y] == ' ') {
+				field[x][y] = (firstPlayerTurn ? 'X' : 'O');
 				outputArray(field);
-				winnerChar = userInput[0];
+				firstPlayerTurn = !firstPlayerTurn;
 			}
 			else {
 				std::cout << "Wrong input, please, try again!" << std::endl;
@@ -105,7 +93,7 @@ int main() {
 	} while (!isGameOver(field));
 
 	if (isWinner(field)) {
-		std::cout << (winnerChar == 'X' ? "First player won!\n" : "Second player won!\n");
+		std::cout << (firstPlayerTurn ? "Second player won!\n" : "First player won!\n");
 	}
 	else {
 		std::cout << "Draw\n";
