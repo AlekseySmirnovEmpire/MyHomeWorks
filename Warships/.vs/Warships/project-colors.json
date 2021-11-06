@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "28a10dc3-ccfc-42e3-a882-eaa2814ddc34": {
+      "ProjectGuid": "28a10dc3-ccfc-42e3-a882-eaa2814ddc34",
+      "DisplayName": "Warships",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
