@@ -1,29 +1,14 @@
 #include <iostream>
 #include <string>
 
-void showBubbles(bool arr[][12], bool isOver, int counter) {
-	if (counter == 0) isOver = true;
-	else {
-		for (int i = 0; i < 12; i++) {
-			for (int j = 0; j < 12; j++) {
-				std::cout << (arr[i][j] == true ? "o " : "x ");
-			}
-			std::cout << std::endl;
+void showBubbles(bool arr[][12]) {
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 12; j++) {
+			std::cout << (arr[i][j] == true ? "o " : "x ");
 		}
-		std::cout << "_______________________\n";
+		std::cout << std::endl;
 	}
-}
-
-void popIt(bool arr[][12], int x, int y, int counter) {
-
-	x--;
-	y = 12 - y;
-
-	if (arr[y][x] = true) {
-		arr[y][x] = false;
-		std::cout << "POP!" << std::endl;
-		counter--;
-	}
+	std::cout << "_______________________\n";
 }
 
 int main() {
@@ -55,31 +40,35 @@ int main() {
 			bubbles[i][j] = true;
 		}
 	}
-	bool isOver = false;
-	int counter = 12 * 12;
 
-	showBubbles(bubbles, isOver, counter);
+	int counter = 12 * 12;
+	bool isOver = (counter == 0);
+
+	showBubbles(bubbles);
 
 	int x, y;
 	
 	do {
-		bool isCorrect = true;
-		do {
-			std::cout << "Input position of bubble you wish to pop (X Y): ";
-			std::cin >> x >> y;
-			if ((x > 12 || x < 1) && (y > 12 || y < 1)) {
-				isCorrect = false;
-				std::cout << "Wrong input, please, try again";
-			}
-		} while (!isCorrect);
-		
-		popIt(bubbles, x, y, counter);
+		std::cout << "Input position of bubble you wish to pop (X Y): ";
+		std::cin >> x >> y;
 
-		showBubbles(bubbles, isOver, counter);
+		while ((x > 12 || x < 1) || (y > 12 || y < 0)) {
+			std::cout << "Wrong input, try again (X Y): ";
+			std::cin >> x >> y;
+		}
+
+		y = 12 - y;
+		x--;
+		
+		if (bubbles[y][x] == true) {
+			bubbles[y][x] = false;
+			std::cout << "POP!" << std::endl;
+			counter--;
+		}
+
+		showBubbles(bubbles);
+
+		isOver = (counter == 0);
 
 	} while (!isOver);
-
-
-
-
 }
