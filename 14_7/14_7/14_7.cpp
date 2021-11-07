@@ -11,6 +11,10 @@ void showBubbles(bool arr[][12]) {
 	std::cout << "_______________________\n";
 }
 
+bool isCorrect(int x, int y) {
+	return ((x < 12 && x > 0) && (y < 12 && y > 0));
+}
+
 int main() {
 	setlocale(LC_ALL, ".UTF8");
 
@@ -46,25 +50,43 @@ int main() {
 
 	showBubbles(bubbles);
 
-	int x, y;
+	int x1, y1, x2, y2;
 	
 	do {
-		std::cout << "Input position of bubble you wish to pop (X Y): ";
-		std::cin >> x >> y;
+		std::cout << "Input start point of aria from 0 to 11 (X1 Y1): ";
+		std::cin >> x1 >> y1;
 
-		while ((x > 12 || x < 1) || (y > 12 || y < 0)) {
-			std::cout << "Wrong input, try again (X Y): ";
-			std::cin >> x >> y;
+		while (!isCorrect(x1, y1)) {
+			std::cout << "Wrong input, try again (X1 Y1): ";
+			std::cin >> x1 >> y1;
 		}
 
-		y = 12 - y;
-		x--;
+		std::cout << "Input end point of aria from 0 to 11 (X2 Y2): ";
+		std::cin >> x2 >> y2;
+
+		while (!isCorrect(x2, y2)) {
+			std::cout << "Wrong input, try again (X1 Y1): ";
+			std::cin >> x2 >> y2;
+		}
 		
-		if (bubbles[y][x] == true) {
-			bubbles[y][x] = false;
-			std::cout << "POP!" << std::endl;
-			counter--;
+		int xmax = x1 > x2 ? x1 : x2;
+		int xmin = x1 > x2 ? x2 : x1;
+		int ymax = y1 > y2 ? y1 : y2;
+		int ymin = y1 > y2 ? y2 : y1;
+
+		bool pop = false;
+
+		for (int i = ymin; i <= ymax; i++) {
+			for (int j = xmin; j <= xmax; j++) {
+				if (bubbles[i][j]) {
+					bubbles[i][j] = false;
+					counter--;
+					pop = true;
+				}
+			}
 		}
+
+		std::cout << (pop ? "POP!\n" : "\n"); 
 
 		showBubbles(bubbles);
 
