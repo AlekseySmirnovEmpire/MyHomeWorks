@@ -1,3 +1,3 @@
 ﻿  15_3.cpp
-D:\Alex\SkillBox_HomeWorks\MyHomeWorks\15_3\15_3\15_3.cpp(27,4): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Alex\SkillBox_HomeWorks\MyHomeWorks\15_3\15_3\15_3.cpp(31,5): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   15_3.vcxproj -> D:\Alex\SkillBox_HomeWorks\MyHomeWorks\15_3\x64\Debug\15_3.exe

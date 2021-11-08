@@ -28,7 +28,9 @@ int main() {
 		std::cout << "Input your dif of speed: ";
 		std::cin >> input;
 
-		speed += input;
+		if (std::fabs(input) > EPS) {
+			speed += input;
+		}
 
 		if (speed > 150 + EPS) {
 			speed = 150;

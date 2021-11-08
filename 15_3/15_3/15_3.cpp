@@ -24,16 +24,22 @@ int main() {
 		std::cin >> input;
 
 		if (input == -1) {
-			for (int i = vec.size() - 1; i >= 0; i--) {
-				int ind = 0;
-				for (int j = 0; j < i; j++) {
-					if (vec[j] > vec[ind]) ind = j;
-				}
-				int temp = vec[i];
-				vec[i] = vec[ind];
-				vec[ind] = temp;
+			if (vec.size() < 5) {
+				std::cout << "Wrong! There're less then 5 number, try again when it'll be 5 or more!" << std::endl;
 			}
-			std::cout << "5'th number is: " << vec[4] << std::endl;
+			else {
+				for (int i = vec.size() - 1; i >= 0; i--) {
+					int ind = 0;
+					for (int j = 0; j < i; j++) {
+						if (vec[j] > vec[ind]) ind = j;
+					}
+					int temp = vec[i];
+					vec[i] = vec[ind];
+					vec[ind] = temp;
+				}
+				std::cout << "5'th number is: " << vec[4] << std::endl;
+			}
+			
 		}
 		else if (input == -2) break;
 		else {
