@@ -26,5 +26,7 @@ int main() {
 
 	result << firstPart << '.' << secondPart;
 
-	std::cout << result.str() << std::endl;
+	double value = std::stod(result.str());
+
+	std::cout << value << std::endl;
 }
