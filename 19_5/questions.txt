@@ -1,0 +1,25 @@
+Quest1: Write "answer 1" to win this round.
+
+Quest2: Write "answer 2" to win this round.
+
+Quest3: Write "answer 3" to win this round.
+
+Quest4: Write "answer 4" to win this round.
+
+Quest5: Write "answer 5" to win this round.
+
+Quest6: Write "answer 6" to win this round.
+
+Quest7: Write "answer 7" to win this round.
+
+Quest8: Write "answer 8" to win this round.
+
+Quest9: Write "answer 9" to win this round.
+
+Quest10: Write "answer 10" to win this round.
+
+Quest11: Write "answer 11" to win this round.
+
+Quest12: Write "answer 12" to win this round.
+
+Quest13: Write "answer 13" to win this round.
