@@ -1,0 +1,4 @@
+Ivan Ivanov 15.10.2015 10000
+Tom Hanks 10.12.2013 45000
+Petr Osipov 22.12.2012 45000
+Naomi Kempbel 27.02.2001 34000
