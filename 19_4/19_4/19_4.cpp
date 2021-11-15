@@ -2,20 +2,10 @@
 #include <fstream>
 #include <string>
 
-std::string transform(std::string input) {
-	for (int i = 0; i < input.length(); i++) {
-		if (input[i] == '\\') {
-			input.insert(i + 1, "\\");
-			i++;
-		}
-	}
-	return input;
-}
-
 bool isFilePNG(std::string input) {
 	for (int i = 0; i < input.length(); i++) {
 		if (input[i] == '.') {
-			if (input.substr(i) != ".png") return false;
+			if (input.substr(i, 4) != ".png") return false;
 		}
 	}
 	return true;
@@ -34,12 +24,12 @@ int main() {
 		std::cin >> path;
 	}
 	
-	file.open(transform(path), std::ios::binary);
+	file.open(path, std::ios::binary);
 
 	while (!file.is_open()) {
 		std::cout << "Error! File not found! Try again: ";
 		std::cin >> path;
-		file.open(transform(path), std::ios::binary);
+		file.open(path, std::ios::binary);
 	}
 
 	std::cout << "~~~~~~~~~~~~~File is OPEN!~~~~~~~~~~~~~" << std::endl;
