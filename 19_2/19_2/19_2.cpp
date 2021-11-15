@@ -3,16 +3,6 @@
 #include <vector>
 #include <string>
 
-std::string transform(std::string input) {
-	for (int i = 0; i < input.length(); i++) {
-		if (input[i] == '\\') {
-			input.insert(i + 1, "\\");
-			i++;
-		}
-	}
-	return input;
-}
-
 int main() {
 
 	std::ifstream file;
@@ -21,18 +11,27 @@ int main() {
 	std::string userInput;
 	std::cin >> userInput;
 
-	file.open(transform(userInput), std::ios::binary);
+	file.open(userInput, std::ios::binary);
 
 	while (!file.is_open()) {
 		std::cout << "Wrong input, try again: ";
 		std::cin >> userInput;
-		file.open(transform(userInput), std::ios::binary);
+		file.open(userInput, std::ios::binary);
 	}
 
 	std::cout << "~~~~~~~~~~~~~~~File is open!~~~~~~~~~~~~~~~" << std::endl;
 
-	char temp;
-	while (file.read((char*)&temp, sizeof(temp))) {
+	char temp[21];
+	while (!file.eof()) {
+		file.read(temp, 20);
+		
+		if (file.gcount() < 20) {
+			temp[file.gcount()] = 0;
+		}
+		else {
+			temp[20] = 0;
+		}
+
 		std::cout << temp;
 	}
 
