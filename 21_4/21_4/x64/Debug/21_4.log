@@ -1,0 +1,7 @@
+﻿  21_4.cpp
+D:\Alex\SkillBox_HomeWorks\MyHomeWorks\21_4\21_4\21_4.cpp(35,22): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Alex\SkillBox_HomeWorks\MyHomeWorks\21_4\21_4\21_4.cpp(55,22): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Alex\SkillBox_HomeWorks\MyHomeWorks\21_4\21_4\21_4.cpp(91,35): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Alex\SkillBox_HomeWorks\MyHomeWorks\21_4\21_4\21_4.cpp(102,35): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Alex\SkillBox_HomeWorks\MyHomeWorks\21_4\21_4\21_4.cpp(268,22): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  21_4.vcxproj -> D:\Alex\SkillBox_HomeWorks\MyHomeWorks\21_4\x64\Debug\21_4.exe
