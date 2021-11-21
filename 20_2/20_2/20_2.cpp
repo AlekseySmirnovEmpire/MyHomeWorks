@@ -12,13 +12,18 @@ int main() {
 
 	std::ofstream file("D:\\Alex\\SkillBox_HomeWorks\\MyHomeWorks\\20_2\\pic.txt");
 
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < weight; j++) {
-			bool temp = rand() % 2;
-			file << temp;
-		}
-		file << std::endl;
+	if (!file.is_open()) {
+		std::cout << "Error! File not found!" << std::endl;
 	}
+	else {
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < weight; j++) {
+				bool temp = rand() % 2;
+				file << temp;
+			}
+			file << std::endl;
+		}
 
-	file.close();
+		file.close();
+	}
 }

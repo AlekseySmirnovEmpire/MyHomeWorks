@@ -68,59 +68,64 @@ int main() {
 
 	if (!data.is_open()) {
 		std::cout << "Error! File not found!" << std::endl;
-		createDataBin();
-		return FILE_NOT_FOUND;
-	}
-
-	std::cout << "~~~~~~~~~~~~~~~~ATM~~~~~~~~~~~~~~~~" << std::endl;
-
-	int atm[6][2];
-	char answer;
-
-	data.read((char*)atm, sizeof(atm));
-	data.close();
-
-	std::cout << "Nominal\tCount" << std::endl;
-	for (int i = 0; i < 6; i++) {
-		for (int j = 0; j < 2; j++) {
-			std::cout << atm[i][j] << '\t';
-		}
-		std::cout << std::endl;
-	}
-
-	std::cout << "Input \"+\" to top up the ATM with banknotes or \"-\" to start withdrawing money: ";
-	std::cin >> answer;
-	std::cin.ignore();
-
-	if (answer == '+') {
-		for (int i = 0; i < 6; i++) {
-			atm[rand() % 6][1] += rand() % 10 + 1;
-		}
-
-		std::ofstream inData("D:\\Alex\\SkillBox_HomeWorks\\MyHomeWorks\\20_4\\data.bin", std::ios::binary);
-		inData.write((char*)&atm, sizeof(atm));
-		inData.close();
-
-	}
-	else if (answer == '-') {
-		int userInput;
-		std::cout << "Input the withdrawal amount: ";
-		std::cin >> userInput;
-		std::cin.ignore();
-
-		if (isCorrectSum(userInput, atm)) {
-			giveMoneyATM(&userInput);
-		}
-		else {
-			std::cout << "Error! ATM doen't have such amount of money!" << std::endl;
-			return NOT_ENOUGHT_MONEY;
-		}
 	}
 	else {
-		std::cout << "Error! Wrong input!" << std::endl;
-		data.close();
-		return WRONG_INPUT;
-	}
+		if (!data.is_open()) {
+			std::cout << "Error! File not found!" << std::endl;
+			createDataBin();
+			return FILE_NOT_FOUND;
+		}
 
-	std::cout << "-------------Goodbye!-----------------" << std::endl;
+		std::cout << "~~~~~~~~~~~~~~~~ATM~~~~~~~~~~~~~~~~" << std::endl;
+
+		int atm[6][2];
+		char answer;
+
+		data.read((char*)atm, sizeof(atm));
+		data.close();
+
+		std::cout << "Nominal\tCount" << std::endl;
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 2; j++) {
+				std::cout << atm[i][j] << '\t';
+			}
+			std::cout << std::endl;
+		}
+
+		std::cout << "Input \"+\" to top up the ATM with banknotes or \"-\" to start withdrawing money: ";
+		std::cin >> answer;
+		std::cin.ignore();
+
+		if (answer == '+') {
+			for (int i = 0; i < 6; i++) {
+				atm[rand() % 6][1] += rand() % 10 + 1;
+			}
+
+			std::ofstream inData("D:\\Alex\\SkillBox_HomeWorks\\MyHomeWorks\\20_4\\data.bin", std::ios::binary);
+			inData.write((char*)&atm, sizeof(atm));
+			inData.close();
+
+		}
+		else if (answer == '-') {
+			int userInput;
+			std::cout << "Input the withdrawal amount: ";
+			std::cin >> userInput;
+			std::cin.ignore();
+
+			if (isCorrectSum(userInput, atm)) {
+				giveMoneyATM(&userInput);
+			}
+			else {
+				std::cout << "Error! ATM doen't have such amount of money!" << std::endl;
+				return NOT_ENOUGHT_MONEY;
+			}
+		}
+		else {
+			std::cout << "Error! Wrong input!" << std::endl;
+			data.close();
+			return WRONG_INPUT;
+		}
+
+		std::cout << "-------------Goodbye!-----------------" << std::endl;
+	}
 }
