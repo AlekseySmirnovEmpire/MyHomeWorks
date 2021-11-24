@@ -88,39 +88,44 @@ bool isGameOver(Person& player, std::vector<Person> enemy) {
 void saveGame(std::vector<std::vector<char>>& field, Person& player, std::vector<Person>& enemy, int turn) {
 	std::ofstream file("save.bin", std::ios::binary);
 
-	int length = player.name.length();
+	if (file.is_open()) {
+		int length = player.name.length();
 
-	file.write((char*)&length, sizeof(length));
-	file.write(player.name.c_str(), length);
-	file.write((char*)&player.health, sizeof(player.health));
-	file.write((char*)&player.armour, sizeof(player.armour));
-	file.write((char*)&player.damage, sizeof(player.damage));
-	file.write((char*)&player.x, sizeof(player.x));
-	file.write((char*)&player.y, sizeof(player.y));
+		file.write((char*)&length, sizeof(length));
+		file.write(player.name.c_str(), length);
+		file.write((char*)&player.health, sizeof(player.health));
+		file.write((char*)&player.armour, sizeof(player.armour));
+		file.write((char*)&player.damage, sizeof(player.damage));
+		file.write((char*)&player.x, sizeof(player.x));
+		file.write((char*)&player.y, sizeof(player.y));
 
-	for (int i = 0; i < 5; ++i) {
-		int len = enemy[i].name.length();
+		for (int i = 0; i < 5; ++i) {
+			int len = enemy[i].name.length();
 
-		file.write((char*)&len, sizeof(len));
-		file.write(enemy[i].name.c_str(), len);
-		file.write((char*)&enemy[i].health, sizeof(enemy[i].health));
-		file.write((char*)&enemy[i].armour, sizeof(enemy[i].armour));
-		file.write((char*)&enemy[i].damage, sizeof(enemy[i].damage));
-		file.write((char*)&enemy[i].x, sizeof(enemy[i].x));
-		file.write((char*)&enemy[i].y, sizeof(enemy[i].y));
-	}
-
-	for (int i = 0; i < 40; ++i) {
-		for (int j = 0; j < 40; j++) {
-			file.write((const char*)&field[i][j], sizeof(field[i][j]));
+			file.write((char*)&len, sizeof(len));
+			file.write(enemy[i].name.c_str(), len);
+			file.write((char*)&enemy[i].health, sizeof(enemy[i].health));
+			file.write((char*)&enemy[i].armour, sizeof(enemy[i].armour));
+			file.write((char*)&enemy[i].damage, sizeof(enemy[i].damage));
+			file.write((char*)&enemy[i].x, sizeof(enemy[i].x));
+			file.write((char*)&enemy[i].y, sizeof(enemy[i].y));
 		}
+
+		for (int i = 0; i < 40; ++i) {
+			for (int j = 0; j < 40; j++) {
+				file.write((const char*)&field[i][j], sizeof(field[i][j]));
+			}
+		}
+
+		file.write((char*)&turn, sizeof(turn));
+
+		file.close();
+
+		std::cout << "========GAME HAS BEEN SAVED!==========" << std::endl;
 	}
-
-	file.write((char*)&turn, sizeof(turn));
-
-	file.close();
-
-	std::cout << "========GAME HAS BEEN SAVED!==========" << std::endl;
+	else {
+		std::cout << "Error! File not found!" << std::endl;
+	}
 }
 
 void loadGame(std::vector<std::vector<char>>& field, Person& player, std::vector<Person>& enemy, int turn) {
