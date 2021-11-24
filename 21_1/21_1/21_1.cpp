@@ -81,19 +81,32 @@ int main() {
 		}
 
 		if (userInput == "/list") {
-			std::ifstream file("D:\\Alex\\SkillBox_HomeWorks\\MyHomeWorks\\21_1\\21_1\\statements.txt");
 
-			while (!file.eof()) {
-				file >> person.firstName >> person.lastName >> person.date >> person.payment;
-				std::cout << person.firstName << ' ' << person.lastName << ' ' << person.date << ' ' << person.payment << std::endl;
+			std::ifstream file("statements.txt");
+
+			if (!file.is_open()) {
+				std::cout << "Error! File not found!" << std::endl;
 			}
-			
-			file.close();
+			else {
+				while (!file.eof()) {
+					file >> person.firstName >> person.lastName >> person.date >> person.payment;
+					std::cout << person.firstName << ' ' << person.lastName << ' ' << person.date << ' ' << person.payment << std::endl;
+				}
+
+				file.close();
+			}			
 		}
 		else if (userInput == "/add") {
-			std::ofstream file("D:\\Alex\\SkillBox_HomeWorks\\MyHomeWorks\\21_1\\21_1\\statements.txt", std::ios::app);
-			newLineAdd(file, person);
-			file.close();
+			std::ofstream file("statements.txt", std::ios::app);
+
+			if (file.is_open()) {
+				newLineAdd(file, person);
+				file.close();
+			}
+			else {
+				std::cout << "Error! File not found!" << std::endl;
+			}
+			
 		}
 	}
 }
