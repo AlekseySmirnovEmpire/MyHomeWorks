@@ -4,14 +4,14 @@
 #include <vector>
 
 enum eBuildingTypes {
-	GARAGE = 1,
+	HOUSE,
+	GARAGE,
 	BARN,
 	BATHHOUSE
 };
 
 enum eRoomsType {
-	NON,
-	BEDROOM,
+	BEDROOM = 1,
 	KITCHEN,
 	BATHROOM,
 	CHILDRENROOM,
@@ -22,12 +22,14 @@ struct Garage
 {
 	bool isFound = false;
 	double square = 0;
+	eBuildingTypes type = HOUSE;
 };
 
 struct Barn
 {
 	bool isFound = false;
 	double square = 0;
+	eBuildingTypes type = HOUSE;
 };
 
 struct BathHouse
@@ -35,11 +37,13 @@ struct BathHouse
 	bool isFound = false;
 	bool isStove = false;
 	double square = 0;
+	eBuildingTypes type = HOUSE;
 };
 
 struct Room
 {
 	double square = 0;
+	eRoomsType type = BATHROOM;
 };
 
 struct Floor
@@ -52,6 +56,7 @@ struct House
 {
 	bool isStove = false;
 	std::vector<Floor> floor;
+	eBuildingTypes type = HOUSE;
 };
 
 struct Region
@@ -85,6 +90,8 @@ void inputBuilding(Region& reg, int* counter) {
 		std::cin >> reg.garageStruct.square;
 		std::cin.ignore();
 
+		reg.garageStruct.type = GARAGE;
+
 		(*counter)--;
 
 		std::cout << "------------------------------------" << std::endl;
@@ -95,6 +102,8 @@ void inputBuilding(Region& reg, int* counter) {
 		std::cout << "What's the square of barn: ";
 		std::cin >> reg.barnStruck.square;
 		std::cin.ignore();
+
+		reg.barnStruck.type = BARN;
 
 		(*counter)--;
 
@@ -107,6 +116,8 @@ void inputBuilding(Region& reg, int* counter) {
 		char answer;
 		std::cin >> answer;
 		std::cin.ignore();
+
+		reg.bathhouseStruct.type = BATHHOUSE;
 
 		reg.bathhouseStruct.isStove = answer == 'y';
 
@@ -123,11 +134,13 @@ void inputBuilding(Region& reg, int* counter) {
 	}
 }
 
-void roomType(Room& rooms) {
+void roomType(Room& rooms, eRoomsType roomType) {
 	
 	std::cout << "What's the square of room: ";
 	std::cin >> rooms.square;
 	std::cin.ignore();
+
+	rooms.type = roomType;
 
 }
 
@@ -152,27 +165,27 @@ void inputRoom(Room& rooms) {
 	if (answer == BEDROOM) {
 		std::cout << "~~~~~~~~~~~~~~BEDROOM~~~~~~~~~~~~~~" << std::endl;
 
-		roomType(rooms);
+		roomType(rooms, BEDROOM);
 	}
 	else if (answer == KITCHEN) {
 		std::cout << "~~~~~~~~~~~~~~KITCHEN~~~~~~~~~~~~~~" << std::endl;
 
-		roomType(rooms);
+		roomType(rooms, KITCHEN);
 	}
 	else if (answer == BATHROOM) {
 		std::cout << "~~~~~~~~~~~~~~BATHROOM~~~~~~~~~~~~~~" << std::endl;
 
-		roomType(rooms);
+		roomType(rooms, BATHROOM);
 	}
 	else if (answer == CHILDRENROOM) {
 		std::cout << "~~~~~~~~~~~~~~CHILDRENROOM~~~~~~~~~~~~~~" << std::endl;
 
-		roomType(rooms);
+		roomType(rooms, CHILDRENROOM);
 	}
 	else if (answer == MEETINGROOM) {
 		std::cout << "~~~~~~~~~~~~~~MEETINGROOM~~~~~~~~~~~~~~" << std::endl;
 
-		roomType(rooms);
+		roomType(rooms, MEETINGROOM);
 	}
 
 	std::cout << "-----------------------------------" << std::endl;
