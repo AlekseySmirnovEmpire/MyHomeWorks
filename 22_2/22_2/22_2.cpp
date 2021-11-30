@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <vector>
 
 bool isCorrectInput(std::string& input) {
 	for (int i = 0; i < input.length(); ++i) {
@@ -11,7 +12,7 @@ bool isCorrectInput(std::string& input) {
 }
 
 int main() {
-	std::multimap<char, std::string> regList;
+	std::map<std::string, int> regList;
 
 	std::string userInput;
 
@@ -25,19 +26,27 @@ int main() {
 		}
 
 		if (userInput == "next") {
-			if (regList.empty()) {
-				std::cout << "The queue is empty!" << std::endl;
+			std::map<std::string, int>::iterator it = regList.begin();
+
+			if (it == regList.end()) {
+				std::cout << "Queue is empty!" << std::endl;
 			}
 			else {
-				std::map<char, std::string>::iterator it = regList.begin();
+				std::cout << it->first << " is NEXT!" << std::endl;
 
-				std::cout << it->second << " is next!" << std::endl;
-
-				regList.erase(it);
+				if (it->second > 1) {
+					--it->second;
+				}
+				else {
+					regList.erase(it);
+				}
 			}
 		}
 		else {
-			regList.emplace(userInput[0], userInput);
+			std::map<std::string, int>::iterator it = regList.find(userInput);
+
+			if (it == regList.end()) regList.emplace(userInput, 1);
+			else ++it->second;
 		}
 	} while (!regList.empty());
 }
