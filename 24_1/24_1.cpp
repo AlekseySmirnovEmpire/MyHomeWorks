@@ -1,139 +1,175 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <ctime>
 #include <string>
-#include <fstream>
+#include <vector>
 
-enum Numbers {
-	DAYS = 60 * 60 * 60,
-	HOURS = 60 * 60,
-	MINUTES = 60
+enum eMenuCommands {
+	BEGIN = 1,
+	STATUS,
+	END,
+	EXIT
 };
 
-std::string getTime(long time) {
+struct Works
+{
+	std::string s_name = "";
+	int s_time = 0;
+	long s_startTime = 0;
+};
 
-	int dayCount = 0, hoursCount = 0, minutesCount = 0;
+std::string transformTime(const int& time) {
+	std::string output = "00:00";
 
-	std::string result;
+	int curTime = time;
 
-	while (time > DAYS) {
-		++dayCount;
-		time -= DAYS;
+	while (curTime >= 360)
+	{
+		curTime -= 360;
+		
+		if (output[1] == '9') {
+			output[1] = '0';
+			output[0] = (char)((int)(output[0]) + 1);
+		}
+		else {
+			output[1] = (char)((int)(output[1]) + 1);
+		}
 	}
 
-	if (dayCount > 0) {
-		result += (dayCount > 9) ? (std::to_string(dayCount) + " days ") : ("0" + std::to_string(dayCount) + " days ");
-	}
-	while (time > HOURS) {
-		++hoursCount;
-		time -= HOURS;
-	}
+	while (curTime >= 60) {
+		curTime -= 60;
 
-	result += (hoursCount > 9) ? (std::to_string(hoursCount) + ":") : ("0" + std::to_string(hoursCount) + ":");
-
-	while (time > MINUTES) {
-		++minutesCount;
-		time -= MINUTES;
+		if (output[4] == '9') {
+			output[4] = '0';
+			output[3] = (char)((int)(output[3]) + 1);
+		}
+		else {
+			output[4] = (char)((int)(output[4]) + 1);
+		}
 	}
 
-	result += (minutesCount > 9) ? (std::to_string(minutesCount) + ":") : ("0" + std::to_string(minutesCount) + ":");
+	output += ":" + std::to_string(curTime);
 
-	result += (time > 9) ? std::to_string(time) : ("0" + std::to_string(time));
+	return output;
+}
 
-	return result;
+void showMenu() {
+	std::cout << BEGIN << ". Begin new work;" << std::endl;
+	std::cout << STATUS << ". Show status of all works u've done;" << std::endl;
+	std::cout << END << ". End work;" << std::endl;
+	std::cout << EXIT << ". Exit programm." << std::endl;
+
+	std::cout << "Input number of command you wish to do: ";
+}
+
+void beginCommand(std::vector<Works>& input) {
+	Works* temp = new Works;
+
+	std::cout << "Input name of your work: ";
+	std::string name;
+	std::getline(std::cin, name);
+
+	temp->s_name = name;
+
+	if (input.size() != 0 && input[input.size() - 1].s_time == 0) {
+
+		input[input.size() - 1].s_time = (int)(std::time(nullptr) - input[input.size() - 1].s_startTime);
+
+	}
+	
+	temp->s_startTime = std::time(nullptr);
+
+	temp->s_time = 0;
+
+	input.push_back(*temp);
+
+	delete temp;
+	temp = nullptr;
+}
+
+void endCommand(std::vector<Works>& input) {
+	if (input.size() != 0 && input[input.size() - 1].s_time == 0) {
+
+		input[input.size() - 1].s_time = (int)(std::time(nullptr) - input[input.size() - 1].s_startTime);
+
+		std::cout << "\"" << input[input.size() - 1].s_name << "\" now ended!" << std::endl;
+	}
+	else {
+		std::cout << "No commands to end!" << std::endl;
+	}
+}
+
+void statusCommand(std::vector<Works>& input) {
+
+	if (input.size() != 0) {
+		for (int i = 0; i < input.size(); ++i) {
+			if (input[i].s_time == 0) {
+				std::cout << "\"" << input[i].s_name << "\" in PROGRESS!" << std::endl;
+			}
+			else {
+				std::cout << "\"" << input[i].s_name << "\" finished in " << transformTime(input[i].s_time) << '.' << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << "No commands have been done!" << std::endl;
+	}
 }
 
 int main() {
 
-	/*Èñïîëüçóÿ ôóíêöèþ ïîëó÷åíèÿ òåêóùåãî âðåìåíè std::time, ðåàëèçóéòå ïðîñòåéøèé ìåíåäæåð ó÷¸òà âðåìåíè.
+	/*Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑŽ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ std::time, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÐ¹Ñ‚Ðµ Ð¿Ñ€Ð¾ÑÑ‚ÐµÐ¹ÑˆÐ¸Ð¹ Ð¼ÐµÐ½ÐµÐ´Ð¶ÐµÑ€ ÑƒÑ‡Ñ‘Ñ‚Ð° Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸.
 
-	Ïîëüçîâàòåëü âçàèìîäåéñòâóåò ñ ïðîãðàììîé ñ ïîìîùüþ êîìàíä:
+	ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð²Ð·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑ‚Ð²ÑƒÐµÑ‚ Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð¾Ð¹ Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ ÐºÐ¾Ð¼Ð°Ð½Ð´:
 
-	Êîìàíäà begin íà÷èíàåò îòñëåæèâàíèå íîâîé çàäà÷è. Ïîñëå ââîäà ýòîé êîìàíäû ïîëüçîâàòåëü äîëæåí ââåñòè
-	íàçâàíèå çàäà÷è, íàä êîòîðîé îí ïëàíèðóåò ñåé÷àñ ðàáîòàòü. Åñëè óæå áûëà íà÷àòà êàêàÿ-òî äðóãàÿ çàäà÷à,
-	ïðåäûäóùàÿ äîëæíà áûòü àâòîìàòè÷åñêè çàâåðøåíà è íà÷àòà íîâàÿ.
-	Êîìàíäà end çàêàí÷èâàåò îòñëåæèâàíèå òåêóùåé çàäà÷è. Åñëè òåêóùåé íà÷àòîé çàäà÷è íåò, òî êîìàíäà íè÷åãî
-	íå äåëàåò.
-	Êîìàíäà status âûâîäèò íà ýêðàí èíôîðìàöèþ î âñåõ çàêîí÷åííûõ çàäà÷àõ è âðåìåíè, êîòîðîå áûëî íà íèõ
-	ïîòðà÷åíî. Òàêæå âûâîäèòñÿ íàçâàíèå òåêóùåé âûïîëíÿåìîé çàäà÷è, åñëè òàêîâàÿ èìååòñÿ.
-	Êîìàíäà exit âûõîäèò èç ïðîãðàììû. */
+	ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° begin Ð½Ð°Ñ‡Ð¸Ð½Ð°ÐµÑ‚ Ð¾Ñ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ð½Ð¸Ðµ Ð½Ð¾Ð²Ð¾Ð¹ Ð·Ð°Ð´Ð°Ñ‡Ð¸. ÐŸÐ¾ÑÐ»Ðµ Ð²Ð²Ð¾Ð´Ð° ÑÑ‚Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð²Ð²ÐµÑÑ‚Ð¸
+	Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð·Ð°Ð´Ð°Ñ‡Ð¸, Ð½Ð°Ð´ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¹ Ð¾Ð½ Ð¿Ð»Ð°Ð½Ð¸Ñ€ÑƒÐµÑ‚ ÑÐµÐ¹Ñ‡Ð°Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ñ‚ÑŒ. Ð•ÑÐ»Ð¸ ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð° Ð½Ð°Ñ‡Ð°Ñ‚Ð° ÐºÐ°ÐºÐ°Ñ-Ñ‚Ð¾ Ð´Ñ€ÑƒÐ³Ð°Ñ Ð·Ð°Ð´Ð°Ñ‡Ð°,
+	Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰Ð°Ñ Ð´Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð° Ð¸ Ð½Ð°Ñ‡Ð°Ñ‚Ð° Ð½Ð¾Ð²Ð°Ñ.
+	ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° end Ð·Ð°ÐºÐ°Ð½Ñ‡Ð¸Ð²Ð°ÐµÑ‚ Ð¾Ñ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ð½Ð¸Ðµ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð·Ð°Ð´Ð°Ñ‡Ð¸. Ð•ÑÐ»Ð¸ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð½Ð°Ñ‡Ð°Ñ‚Ð¾Ð¹ Ð·Ð°Ð´Ð°Ñ‡Ð¸ Ð½ÐµÑ‚, Ñ‚Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð½Ð¸Ñ‡ÐµÐ³Ð¾
+	Ð½Ðµ Ð´ÐµÐ»Ð°ÐµÑ‚.
+	ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° status Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ñ‚ Ð½Ð° ÑÐºÑ€Ð°Ð½ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ð²ÑÐµÑ… Ð·Ð°ÐºÐ¾Ð½Ñ‡ÐµÐ½Ð½Ñ‹Ñ… Ð·Ð°Ð´Ð°Ñ‡Ð°Ñ… Ð¸ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ðµ Ð±Ñ‹Ð»Ð¾ Ð½Ð° Ð½Ð¸Ñ…
+	Ð¿Ð¾Ñ‚Ñ€Ð°Ñ‡ÐµÐ½Ð¾. Ð¢Ð°ÐºÐ¶Ðµ Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ñ‚ÑÑ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÑÐµÐ¼Ð¾Ð¹ Ð·Ð°Ð´Ð°Ñ‡Ð¸, ÐµÑÐ»Ð¸ Ñ‚Ð°ÐºÐ¾Ð²Ð°Ñ Ð¸Ð¼ÐµÐµÑ‚ÑÑ.
+	ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° exit Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ñ‚ Ð¸Ð· Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹. */
 
 
-	std::string userInput = "";
+	int userInput;
 
-	bool isAction = false;
+	std::vector<Works> works;
 
-	long tempTime;
+	do {
+		showMenu();
+		std::cin >> userInput;
+		std::cin.ignore();
 
-	while (userInput != "exit") {
+		switch (userInput)
+		{
+		case BEGIN:
+			beginCommand(works);
 
-		std::cout << "Enter your command (exit to stop): " << std::endl;
-		std::getline(std::cin, userInput);
+			break;
 
-		long curTime;
+		case STATUS:
+			system("cls");
 
-		if (userInput == "begin") {
+			statusCommand(works);
 
-			std::ofstream file("text.txt", std::ios::app);
+			break;
 
-			if (file.is_open()) {
-				std::cout << "Which action you wanted to do: ";
-				std::string answer;
+		case END:
+			endCommand(works);
 
-				std::getline(std::cin, answer);
+			break;
 
-				curTime = std::time(nullptr);
+		case EXIT:
+			break;
 
-				file << answer << ' ';
-
-				if (isAction) {
-					file << getTime(curTime - tempTime) << std::endl;
-
-					file << answer << ' ';
-				}
-				else {
-
-					file << answer << ' ';
-
-					isAction = true;
-				} 
-
-				tempTime = curTime;
-
-				file.close();
-			}
-			else {
-				std::cout << "Error! File with notes not found!" << std::endl;
-			}
+		default:
+			std::cout << "Wrong input! Try again!" << std::endl;
+			break;
 		}
-		else if (userInput == "status") {
-			std::ifstream file("text.txt");
 
-			if (file.is_open()) {
+		std::cout << "========================" << std::endl;
 
-				file.seekg(0);
-				while (!file.eof()) {
-					char* temp = new char[21];
+	} while (userInput != EXIT);
 
-					file.read(temp, 20);
-
-					if (file.gcount() < 20) {
-						temp[file.gcount()] = 0;
-					}
-					else {
-						temp[20] = 0;
-					}
-
-					std::cout << temp;
-				}
-
-				file.close();
-			}
-			else {
-				std::cout << "You don't have any notes!" << std::endl;
-			}
-		}
-		else {
-			std::cout << "Wrong input!" << std::endl;
-		}
-	}
+	std::cout << "==============GOODBYE!==============" << std::endl;
 }
