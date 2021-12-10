@@ -1,4 +1,4 @@
-#include "CommandList.h"
+#include "RAM.h"
 #include <fstream>
 #include <iostream>
 
@@ -24,29 +24,24 @@ void load() {
 
 	if (file.is_open()) {
 
-		int* temp = new int;
+		int temp;
 
-		int* i = new int;
-		*i = 0;
+		int i = 0;
 
 		while (!file.eof()) {
 
-			file >> *temp;
+			file >> temp;
 
-			write(*i, *temp);
+			write(i, temp);
 
-			++* i;
+			++i;
 		}
 
 		std::cout << "File LOADED!" << std::endl;
 
-		delete temp;
-		temp = nullptr;
-
-		delete i;
-		i = nullptr;
 	}
 	else {
+
 		std::cout << "Error! File not found!" << std::endl;
 	}
 }

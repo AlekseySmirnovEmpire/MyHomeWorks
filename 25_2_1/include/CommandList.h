@@ -1,5 +1,10 @@
 ﻿#pragma once
 #include <iostream>
+#include <cpu.h>
+#include <disk.h>
+#include <gpu.h>
+#include <kbd.h>
+#include <RAM.h>
 
 enum eCommandNumber
 {
@@ -23,19 +28,3 @@ inline void showCommands() {
 	std::cout << "Input number of command you want to do: ";
 
 }
-
-int read(int& i);
-
-void write(int& i, int& temp);
-
-void show();
-
-void input();
-
-void show();
-
-void sum();
-
-void save();
-
-void load();

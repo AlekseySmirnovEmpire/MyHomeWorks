@@ -1,19 +1,15 @@
-#include "CommandList.h"
+#include "RAM.h"
 #include <iostream>
 
 void sum() {
 
-	int* temp = new int;
-	*temp = 0;
+	int temp = 0;
 
 	for (int i = 0; i < 8; ++i) {
 
-		*temp += read(i);
+		temp += read(i);
 
 	}
 
-	std::cout << "Sum is: " << *temp << std::endl;
-
-	delete temp;
-	temp = nullptr;
+	std::cout << "Sum is: " << temp << std::endl;
 }
