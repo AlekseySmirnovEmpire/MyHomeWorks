@@ -3,13 +3,6 @@
 
 #define PI 3.141592
 
-enum eColors {
-	NONE,
-	RED,
-	BLUE,
-	GREEN
-};
-
 enum eCommands {
 	CIRCLE = 1,
 	SQUARE,
@@ -18,16 +11,51 @@ enum eCommands {
 	EXIT
 };
 
-int getColor();
-
-void showCoordinatOfRectangle(const double& edge, const double& midX, const double& midY, const double& secondEdge);
-
 class Basic {
 
 protected:
 	double middleX = 0.0;
 	double middleY = 0.0;
-	int color = NONE;
+
+	void showCoordinatOfRectangle(const double& edge, const double& midX, const double& midY, const double& secondEdge) {
+
+		std::cout << "LEFT TOP {" << midX - edge / 2 << ";" << midY + secondEdge / 2 << "}" << std::endl;
+		std::cout << "RIGHT TOP {" << midX + edge / 2 << ";" << midY + secondEdge / 2 << "}" << std::endl;
+		std::cout << "LEFT BOTTOM {" << midX - edge / 2 << ";" << midY - secondEdge / 2 << "}" << std::endl;
+		std::cout << "RIGHT BOTTOM {" << midX + edge / 2 << ";" << midY - secondEdge / 2 << "}" << std::endl;
+	}
+
+private:
+
+	enum eColors {
+		NONE,
+		RED,
+		BLUE,
+		GREEN
+	};
+
+	eColors color = NONE;
+
+	eColors getColor() {
+		std::cout << RED << ". Red color;" << std::endl;
+		std::cout << BLUE << ". Blue color;" << std::endl;
+		std::cout << GREEN << ". Green color." << std::endl;
+
+		int answer;
+
+		std::cout << "Type your colour: ";
+		std::cin >> answer;
+
+		while (answer < NONE || answer > GREEN) {
+
+			std::cout << "Wrong input! Try again: ";
+			std::cin >> answer;
+		}
+
+		system("cls");
+
+		return (eColors)answer;
+	}
 
 public:
 	
@@ -41,7 +69,7 @@ public:
 
 class Circle : public Basic {
 
-protected:
+private:
 	double radius = 0.0;
 
 public:
@@ -67,7 +95,7 @@ public:
 
 class Triangle : public Basic {
 
-protected:
+private:
 	double edge = 0.0;
 
 public:
@@ -96,7 +124,7 @@ public:
 
 class Square : public Basic {
 
-protected:
+private:
 	double edge = 0.0;
 
 public:
@@ -122,7 +150,7 @@ public:
 
 class Rectangle : public Basic {
 
-protected:
+private:
 	double weight = 0.0;
 	double height = 0.0;
 
@@ -212,34 +240,4 @@ int main() {
 	} while (userInput != EXIT);
 
 	std::cout << "=================GOODBYE!===================" << std::endl;
-}
-
-int getColor() {
-
-	std::cout << RED << ". Red color;" << std::endl;
-	std::cout << BLUE << ". Blue color;" << std::endl;
-	std::cout << GREEN << ". Green color." << std::endl;
-
-	int answer;
-
-	std::cout << "Type your colour: ";
-	std::cin >> answer;
-
-	while (answer < NONE || answer > GREEN) {
-
-		std::cout << "Wrong input! Try again: ";
-		std::cin >> answer;
-	}
-
-	system("cls");
-
-	return answer;
-}
-
-void showCoordinatOfRectangle(const double& edge, const double& midX, const double& midY, const double& secondEdge) {
-
-	std::cout << "LEFT TOP {" << midX - edge / 2 << ";" << midY + secondEdge / 2 << "}" << std::endl;
-	std::cout << "RIGHT TOP {" << midX + edge / 2 << ";" << midY + secondEdge / 2 << "}" << std::endl;
-	std::cout << "LEFT BOTTOM {" << midX - edge / 2 << ";" << midY - secondEdge / 2 << "}" << std::endl;
-	std::cout << "RIGHT BOTTOM {" << midX + edge / 2 << ";" << midY - secondEdge / 2 << "}" << std::endl;
 }
