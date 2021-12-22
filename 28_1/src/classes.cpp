@@ -2,6 +2,7 @@
 #include <iostream>
 #include <thread>
 #include <map>
+#include <mutex>
 
 Sportsman::Sportsman() {
 
@@ -14,6 +15,8 @@ Sportsman::Sportsman() {
 }
 
 void startSwim(Sportsman& sportsman, std::map<int, std::string>& score) {
+
+	std::mutex mathScores;
 
 	int distance = 100;
 
@@ -29,7 +32,11 @@ void startSwim(Sportsman& sportsman, std::map<int, std::string>& score) {
 		std::cout << sportsman.getName() << " swimming for " << time << " seconds!" << std::endl;
 	}
 
+	mathScores.lock();
+
 	score.emplace(score.size() + 1, sportsman.getName());
+
+	mathScores.unlock();
 
 	std::cout << "================" << sportsman.getName() << " have finished!=================" << std::endl;
 }
