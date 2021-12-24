@@ -1,0 +1,5 @@
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/28_2/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/28_2/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/28_2/out/build/x64-Debug/src/CMakeFiles/28_2.dir
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/28_2/out/build/x64-Debug/src/CMakeFiles/edit_cache.dir
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/28_2/out/build/x64-Debug/src/CMakeFiles/rebuild_cache.dir
