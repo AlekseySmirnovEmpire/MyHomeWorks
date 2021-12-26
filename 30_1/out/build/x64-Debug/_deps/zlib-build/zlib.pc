@@ -1,0 +1,13 @@
+prefix=D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/install/x64-Debug
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+sharedlibdir=${libdir}
+includedir=${prefix}/include
+
+Name: zlib
+Description: zlib-ng compression library
+Version: 1.2.11.zlib-ng
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

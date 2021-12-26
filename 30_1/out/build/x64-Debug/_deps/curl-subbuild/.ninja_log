@@ -1,0 +1,21 @@
+# ninja log v5
+0	253	6621375026860741	curl-populate-prefix/src/curl-populate-stamp/curl-populate-mkdir	2de9e5ab27ae77c
+10256	10335	6621375127694421	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-test	d61c04e3552bc324
+9523	9601	6621375120362377	curl-populate-prefix/src/curl-populate-stamp/curl-populate-update	168e3f98b0cdeca3
+9753	9965	6621375123993282	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-patch	b12848b85f85ca36
+0	253	6621375026860741	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-mkdir	2de9e5ab27ae77c
+9523	9601	6621375120362377	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-update	168e3f98b0cdeca3
+254	9523	6621375119576004	curl-populate-prefix/src/curl-populate-stamp/curl-populate-download	9c13681d97799ae8
+9753	9965	6621375123993282	curl-populate-prefix/src/curl-populate-stamp/curl-populate-patch	b12848b85f85ca36
+10256	10335	6621375127694421	curl-populate-prefix/src/curl-populate-stamp/curl-populate-test	d61c04e3552bc324
+254	9523	6621375119576004	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-download	9c13681d97799ae8
+10336	10443	6621375128787258	CMakeFiles/curl-populate-complete	f7010928919934f2
+9965	10045	6621375124801150	curl-populate-prefix/src/curl-populate-stamp/curl-populate-configure	b53a690e0e35228c
+9965	10045	6621375124801150	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-configure	b53a690e0e35228c
+10336	10443	6621375128787258	curl-populate-prefix/src/curl-populate-stamp/curl-populate-done	f7010928919934f2
+10045	10165	6621375125909974	curl-populate-prefix/src/curl-populate-stamp/curl-populate-build	5485401d348f7422
+10045	10165	6621375125909974	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-build	5485401d348f7422
+10165	10256	6621375126923979	curl-populate-prefix/src/curl-populate-stamp/curl-populate-install	c836060925f216a7
+10165	10256	6621375126923979	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-install	c836060925f216a7
+10336	10443	6621375128787258	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/CMakeFiles/curl-populate-complete	f7010928919934f2
+10336	10443	6621375128787258	D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_1/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-done	f7010928919934f2
