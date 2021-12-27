@@ -1,0 +1,14 @@
+# Target labels
+ curl-populate
+# Source files and their labels
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/CMakeFiles/curl-populate
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/CMakeFiles/curl-populate.rule
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/CMakeFiles/curl-populate-complete.rule
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-build.rule
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-configure.rule
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-download.rule
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-install.rule
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-mkdir.rule
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-patch.rule
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-test.rule
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/curl-subbuild/curl-populate-prefix/src/curl-populate-stamp/curl-populate-update.rule

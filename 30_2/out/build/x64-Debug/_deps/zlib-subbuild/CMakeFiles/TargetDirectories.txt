@@ -1,0 +1,3 @@
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/zlib-subbuild/CMakeFiles/rebuild_cache.dir
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/zlib-subbuild/CMakeFiles/zlib-populate.dir
+D:/Alex/SkillBox_HomeWorks/MyHomeWorks/30_2/out/build/x64-Debug/_deps/zlib-subbuild/CMakeFiles/edit_cache.dir
