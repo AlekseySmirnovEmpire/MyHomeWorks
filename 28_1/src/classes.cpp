@@ -4,6 +4,8 @@
 #include <map>
 #include <mutex>
 
+std::mutex mathScores;
+
 Sportsman::Sportsman() {
 
 	std::cout << "Input sportsman's name: ";
@@ -15,8 +17,6 @@ Sportsman::Sportsman() {
 }
 
 void startSwim(Sportsman& sportsman, std::map<int, std::string>& score) {
-
-	std::mutex mathScores;
 
 	int distance = 100;
 
@@ -36,9 +36,9 @@ void startSwim(Sportsman& sportsman, std::map<int, std::string>& score) {
 
 	score.emplace(score.size() + 1, sportsman.getName());
 
-	mathScores.unlock();
-
 	std::cout << "================" << sportsman.getName() << " have finished!=================" << std::endl;
+
+	mathScores.unlock();
 }
 
 void showScore(std::map<int, std::string>& score) {
