@@ -394,8 +394,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Visual Studio 2019 cache/options directory
-.vs/
-
 # Add this line
 out/
