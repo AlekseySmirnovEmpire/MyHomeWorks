@@ -6,9 +6,9 @@
 #include <vector>
 #include <string>
 
-void trainOnStation(Train& train) {
+std::mutex mtx;
 
-	std::mutex mtx;
+void trainOnStation(Train& train) {
 
 	std::lock_guard<std::mutex> guard(mtx);
 
