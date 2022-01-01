@@ -33,6 +33,13 @@ void Smart_ptr::dataDelete()
 
 Toy& Smart_ptr::operator*() { return *ptr; }
 
+Smart_ptr& Smart_ptr::operator=(Smart_ptr& temp) 
+{
+	ptr = temp.ptr;
+	count = temp.count;
+	return *this;
+}
+
 Smart_ptr makeSharedPtr(const std::string& name) 
 {
 	Smart_ptr temp;

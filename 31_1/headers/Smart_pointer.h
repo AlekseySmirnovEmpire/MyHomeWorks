@@ -19,6 +19,7 @@ public:
 	void setCount(int* count) { this->count = count; }
 
 	Toy& operator*();
+	Smart_ptr& operator=(Smart_ptr& toy);
 };
 
 Smart_ptr makeSharedPtr(const std::string& name);
