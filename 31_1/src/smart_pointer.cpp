@@ -35,15 +35,10 @@ Toy& Smart_ptr::operator*() { return *ptr; }
 
 Smart_ptr& Smart_ptr::operator=(Smart_ptr& temp) 
 {
-	if (ptr != nullptr) 
-	{
-		delete ptr;
-		delete count;
-	}
-	else if (this == &temp) 
-	{
+	if (this == &temp)
 		return *this;
-	}
+
+	dataDelete();
 
 	ptr = temp.ptr;
 	count = temp.count;
