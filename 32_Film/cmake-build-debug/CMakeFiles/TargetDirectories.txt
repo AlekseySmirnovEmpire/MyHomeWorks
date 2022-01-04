@@ -1,0 +1,5 @@
+/media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film/cmake-build-debug/CMakeFiles/edit_cache.dir
+/media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film/cmake-build-debug/CMakeFiles/32_Film.dir
+/media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film/cmake-build-debug/nlohmann_json/CMakeFiles/rebuild_cache.dir
+/media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film/cmake-build-debug/nlohmann_json/CMakeFiles/edit_cache.dir

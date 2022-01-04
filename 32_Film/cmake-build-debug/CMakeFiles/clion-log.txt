@@ -1,0 +1,5 @@
+/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/ninja/linux/ninja -G Ninja /media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film
+-- Using the single-header code from /media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film/nlohmann_json/single_include/
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film/cmake-build-debug

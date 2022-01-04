@@ -1,0 +1,129 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/CMakeFiles/3.21.1/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/CMakeFiles/3.21.1/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "nlohmann_json/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/ExternalProject.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/GNUInstallDirs.cmake"
+		},
+		{
+			"path" : "nlohmann_json/cmake/pkg-config.pc.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/media/tsukuyomi/088C52C349502E86/clion-2021.3.2/bin/cmake/linux/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"path" : "nlohmann_json/cmake/nlohmann_jsonConfigVersion.cmake.in"
+		},
+		{
+			"path" : "nlohmann_json/cmake/config.cmake.in"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film/cmake-build-debug",
+		"source" : "/media/tsukuyomi/088C52C349502E86/MyHomeWorks/32_Film"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}
