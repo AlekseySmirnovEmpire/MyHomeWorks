@@ -7,7 +7,8 @@ enum eCommands
     ADD = 1,
     REMOVE,
     PRINT,
-    FIND
+    FIND,
+    EXIT
 };
 
 void showMenu();

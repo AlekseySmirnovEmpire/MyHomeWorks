@@ -12,7 +12,7 @@ void Reestr<T1, T2>::addKey(T1 key, T2 data)
 
 
 template<typename T1, typename T2>
-void Reestr<T1, T2>::removeKey(T1 key, T2 data)
+void Reestr<T1, T2>::removeKey(T1 key)
 {
     clear();
 
@@ -33,7 +33,7 @@ void Reestr<T1, T2>::removeKey(T1 key, T2 data)
 }
 
 template<typename T1, typename T2>
-void Reestr<T1, T2>::findKey(T1 key, T2 data)
+void Reestr<T1, T2>::findKey(T1 key)
 {
     clear();
 
@@ -43,7 +43,7 @@ void Reestr<T1, T2>::findKey(T1 key, T2 data)
 
         if(it != reded[i].end())
         {
-            std::cout << "Key: " << key << std::endl << "Data: " << data << std::endl;
+            std::cout << "Key: " << it->first << std::endl << "Data: " << it->second << std::endl;
 
             return;
         }
@@ -52,7 +52,7 @@ void Reestr<T1, T2>::findKey(T1 key, T2 data)
 }
 
 template<typename T1, typename T2>
-void Reestr<T1, T2>::printKey(T1 key, T2 data)
+void Reestr<T1, T2>::printKey(T1 key)
 {
     clear();
 
